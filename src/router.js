@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home.vue'
-import Record from '@/views/Record.vue'
 
 Vue.use(Router)
 
@@ -27,9 +26,24 @@ export default new Router({
       },
       children: [
         {
-          path: '',
-          // component: () => import('@/views/Record.vue')
-          component: Record
+          path: '/index',
+          component: () => import('@/views/home/index.vue')
+        },
+        {
+          path: '/blog',
+          component: () => import('@/views/blog/index.vue')
+        },
+        {
+          path: '/resource',
+          component: () => import('@/views/resource/index.vue')
+        },
+        {
+          path: '/setting',
+          component: () => import('@/views/setting/index.vue')
+        },
+        {
+          path: '/',
+          redirect: '/index'
         }
       ]
     },

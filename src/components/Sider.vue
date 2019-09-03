@@ -5,7 +5,7 @@
       <el-menu-item v-for="(item, i) in menu"
                     :key="i"
                     :index="item.idx"
-                    @click="handleClick">
+                    @click="handleClick(item.attr)">
         <template>
           <i :class="item.icon"></i>
           <span slot="title">{{ item.title }}</span>
@@ -21,14 +21,10 @@ export default {
     return {
       isCollapse: false,
       menu: [
-        {
-          idx: '1',
-          title: '首页',
-          icon: 'el-icon-s-home'
-        },
-        { idx: '2', title: '资源', icon: 'el-icon-document' },
-        { idx: '3', title: '博客', icon: 'el-icon-menu' },
-        { idx: '4', title: '设置', icon: 'el-icon-setting' }
+        { idx: '1', title: '首页', attr: '/index', icon: 'el-icon-s-home' },
+        { idx: '2', title: '资源', attr: '/resource', icon: 'el-icon-document' },
+        { idx: '3', title: '博客', attr: '/blog', icon: 'el-icon-menu' },
+        { idx: '4', title: '设置', attr: '/setting', icon: 'el-icon-setting' }
       ]
     }
   },
@@ -39,7 +35,10 @@ export default {
   },
   methods: {
     handleClick (para) {
-      console.log('para', para)
+      const path = this.$router.currentRoute.fullPath
+      if (para !== path) {
+        this.$router.push({ path: para })
+      }
     }
   }
 }
@@ -49,5 +48,8 @@ export default {
 #menu {
   width: 200px;
   height: 100%;
+  .el-menu {
+    height: 100%;
+  }
 }
 </style>
