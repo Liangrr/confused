@@ -1,5 +1,11 @@
 # vonic_demo
 
+### 项目讲解
+1. 安装npm包，启动
+2. 注册，登录，忘记密码
+3. 登录时将 token返回存储到session
+4. 在进入首页时加 用户可见信息存到session和store里
+
 ## Project setup
 ```
 npm install
@@ -24,8 +30,6 @@ npm run test
 ```
 npm run lint
 ```
-
-
 
 1. iconfont ---- 创建项目(多人维护)
 

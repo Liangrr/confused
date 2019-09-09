@@ -62,7 +62,7 @@ export default {
       this.$router.push('/forget')
     },
     handleLogin (para) {
-      let _this = this
+      let that = this
       this.$refs['userForm'].validate((valid) => {
         if (valid) {
           this.$axios.post('/login', {
@@ -72,10 +72,11 @@ export default {
             .then(function (response) {
               const data = response.data
               if (data.code === 200) {
-                sessionStorage.setItem('token', data.userName)
-                _this.$router.push('/home')
+                sessionStorage.setItem('token', data.username)
+                sessionStorage.setItem('user', data.username)
+                that.$router.push('/home')
               } else {
-                _this.$message({
+                that.$message({
                   showClose: true,
                   message: data.msg,
                   type: 'error'

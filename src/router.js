@@ -34,6 +34,10 @@ export default new Router({
           component: () => import('@/views/blog/index.vue')
         },
         {
+          path: '/increase',
+          component: () => import('@/views/blog/Increase.vue')
+        },
+        {
           path: '/resource',
           component: () => import('@/views/resource/index.vue')
         },

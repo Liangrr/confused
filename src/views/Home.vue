@@ -7,7 +7,10 @@
 
 <script>
 export default {
-  name: 'home'
+  name: 'home',
+  created () {
+    this.$store.state.username = sessionStorage.getItem('user')
+  }
 }
 </script>
 
