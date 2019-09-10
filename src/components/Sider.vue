@@ -24,7 +24,8 @@ export default {
         { idx: '1', title: '首页', attr: '/index', icon: 'el-icon-s-home' },
         { idx: '2', title: '资源', attr: '/resource', icon: 'el-icon-document' },
         { idx: '3', title: '博客', attr: '/blog', icon: 'el-icon-menu' },
-        { idx: '4', title: '设置', attr: '/setting', icon: 'el-icon-setting' }
+        { idx: '4', title: '地图', attr: '/amap', icon: 'el-icon-location' },
+        { idx: '5', title: '设置', attr: '/setting', icon: 'el-icon-setting' }
       ]
     }
   },

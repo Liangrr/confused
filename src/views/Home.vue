@@ -9,7 +9,7 @@
 export default {
   name: 'home',
   created () {
-    this.$store.state.username = sessionStorage.getItem('user')
+    this.$store.state.username = sessionStorage.getItem('token')
   }
 }
 </script>

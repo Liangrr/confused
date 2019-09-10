@@ -1,10 +1,6 @@
 <template>
   <div id="writeBlog" style="max-width: 800px;padding: 30px;">
-    <el-row style="text-align: center;margin-bottom: 30px;">
-      <el-col :span="8"><el-button @click="articleFun('/blog')">查看主页</el-button></el-col>
-      <el-col :span="8"><el-button disabled @click="articleFun('/essay')">文章管理</el-button></el-col>
-      <el-col :span="8"><el-button disabled @click="articleFun('/comment')">评论管理</el-button></el-col>
-    </el-row>
+    <BlogHead></BlogHead>
     <el-input v-model="title" placeholder="请输入标题" style="margin-bottom: 30px;"></el-input>
     <div id="wangeditor" style="margin-bottom: 30px;">
       <div ref="editorElem"></div>
@@ -16,8 +12,13 @@
 
 <script>
 import E from 'wangeditor'
+import { setTimeout } from 'timers'
+import BlogHead from '../../components/blogHead.vue'
 export default {
   name: 'Editor',
+  components: {
+    BlogHead
+  },
   data () {
     return {
       title: '',
@@ -26,9 +27,6 @@ export default {
     }
   },
   methods: {
-    articleFun (type) {
-      this.$router.push(type)
-    },
     send () {},
     save () {
       let [that, bool] = [this, false]
@@ -38,7 +36,6 @@ export default {
         content: this.content,
         username: this.$store.state.username
       }
-      console.log(data)
       Object.values(data).map(item => {
         if (item === '' || item === null) {
           bool = true
@@ -54,6 +51,9 @@ export default {
               type: 'success',
               message: res.data.msg
             })
+            setTimeout(function () {
+              that.$router.push('/blog')
+            }, 2000)
           }
         }).catch(error => console.log(error))
       }

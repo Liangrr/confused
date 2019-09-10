@@ -73,7 +73,6 @@ export default {
               const data = response.data
               if (data.code === 200) {
                 sessionStorage.setItem('token', data.username)
-                sessionStorage.setItem('user', data.username)
                 that.$router.push('/home')
               } else {
                 that.$message({

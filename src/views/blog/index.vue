@@ -1,11 +1,11 @@
 <template>
   <div class="blog">
-    <el-button @click="writeEvent">写博客</el-button>
+    <BlogHead style="width: 800px;"></BlogHead>
     <div class="bloglist" v-for="(item, i) in blogData" :key="i">
       <h2><a href="#">{{ item.title }}</a></h2>
       <ul>
         <li class="content">{{ item.content }}</li>
-        <li class="readmore"><a href="#">阅读全文>></a></li>
+        <li class="readmore"><a @click="readDetail(item._id)">阅读全文>></a></li>
         <li class="dateview">
           <i class="el-icon-time"></i><span>&nbsp;&nbsp; {{ item.createAt | filterTime }} </span>
           <i class="el-icon-user"></i><span>&nbsp;&nbsp; {{ item.username }} </span>
@@ -16,27 +16,27 @@
 </template>
 
 <script>
+import mixin from '../../components/mixin'
+import BlogHead from '../../components/blogHead.vue'
 export default {
+  components: {
+    BlogHead
+  },
+  mixins: [mixin],
   data () {
     return {
       blogData: []
     }
   },
-  filters: {
-    filterTime (para) {
-      return para.substr(0, 10)
-    }
-  },
   created () {
     let that = this
     this.$axios.post('/article', { type: 'all' }).then(res => {
-      console.log('res', res)
       that.blogData = res.data
     }).catch(error => console.log(error))
   },
   methods: {
-    writeEvent () {
-      this.$router.push('/increase')
+    readDetail (id) {
+      this.$router.push({ path: '/show', query: { id } })
     }
   }
 }
