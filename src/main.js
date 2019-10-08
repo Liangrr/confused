@@ -5,22 +5,13 @@ import store from './store'
 import Sider from './components/Sider.vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import axios from 'axios'
 import VueAMap from 'vue-amap'
-// 公共scss
-import './assets/common.scss'
+
 // 引进rem布局
 // import remConfig from './utils/remConfig.js'
 // remConfig()
 import fun from './utils/common'
 Vue.prototype.$fun = fun
-
-axios.defaults.baseURL = 'http://localhost:3000'
-// axios.defaults.headers.common['Authorization'] = 'lrr'
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
-
-Vue.prototype.$axios = axios
-Vue.config.productionTip = false
 
 Vue.use(ElementUI)
 Vue.use(VueAMap)

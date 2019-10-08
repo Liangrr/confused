@@ -2,6 +2,7 @@
   <div id="login">
     <el-form :model="userForm"
              ref="userForm">
+      <h2 class="title">后台管理系统</h2>
       <el-form-item v-for="(row, i) in rows"
                     :key="i"
                     :prop="row.name"
@@ -25,6 +26,8 @@
 </template>
 
 <script>
+import API from '@/utils/api'
+
 export default {
   data () {
     return {
@@ -39,7 +42,7 @@ export default {
           type: 'text',
           prefix: 'el-icon-s-custom',
           rules: [
-            { required: true, message: '账号不能为空' }
+            { required: true, message: '账号不能为空', placeholder: '用戶名' }
           ]
         },
         {
@@ -61,30 +64,29 @@ export default {
     handleForget () {
       this.$router.push('/forget')
     },
-    handleLogin (para) {
+    async handleLogin (para) {
       let that = this
-      this.$refs['userForm'].validate((valid) => {
+      this.$refs['userForm'].validate(async (valid) => {
         if (valid) {
-          this.$axios.post('/login', {
+          const data = {
             username: this.userForm.account,
             password: this.userForm.password
+          }
+          API.postUserInfoById('/login', data).then((response) => {
+            const data = response.data
+            if (data.code === 200) {
+              sessionStorage.setItem('token', data.username)
+              that.$router.push('/home')
+            } else {
+              that.$message({
+                showClose: true,
+                message: data.msg,
+                type: 'error'
+              })
+            }
+          }).catch((error) => {
+            console.log(error)
           })
-            .then(function (response) {
-              const data = response.data
-              if (data.code === 200) {
-                sessionStorage.setItem('token', data.username)
-                that.$router.push('/home')
-              } else {
-                that.$message({
-                  showClose: true,
-                  message: data.msg,
-                  type: 'error'
-                })
-              }
-            })
-            .catch(function (error) {
-              console.log(error)
-            })
         } else {
           this.$message({
             showClose: true,
@@ -103,13 +105,21 @@ export default {
 #login {
   width: 100%;
   height: 100%;
+  background-color: #324057;
   display: flex;
   flex-direction: row; /* 子元素横向排列 */
   justify-content: center; /* 相对父元素水平居中 */
   align-items: center; /*  子元素相对父元素垂直居中 */
+  .title {
+    text-align: center;
+    height: 50px;
+  }
   .el-form {
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    min-height: 200px;
+    padding: 30px 30px 5px 30px;
+    background: white;
+    border-radius: 5px;
   }
 }
 </style>
