@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import { forget } from '@/utils/api'
+
 export default {
   data () {
     return {
@@ -56,7 +58,7 @@ export default {
       let _this = this
       this.$refs['forgetForm'].validate((valid) => {
         if (valid) {
-          this.$axios.post('/forget', {
+          forget('/forget', {
             username: this.forgetForm.account,
             password: this.forgetForm.password
           })

@@ -18,6 +18,7 @@
 <script>
 import mixin from '../../components/mixin'
 import BlogHead from '../../components/blogHead.vue'
+import { article } from '@/utils/api'
 export default {
   components: {
     BlogHead
@@ -30,7 +31,7 @@ export default {
   },
   created () {
     let that = this
-    this.$axios.post('/article', { type: 'all' }).then(res => {
+    article('/article', { type: 'all' }).then(res => {
       that.blogData = res.data
     }).catch(error => console.log(error))
   },

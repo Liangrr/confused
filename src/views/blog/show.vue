@@ -13,6 +13,7 @@
 <script>
 import mixin from '../../components/mixin'
 import BlogHead from '../../components/blogHead.vue'
+import { article } from '@/utils/api'
 export default {
   components: {
     BlogHead
@@ -26,7 +27,7 @@ export default {
   created () {
     // console.log('创建后')
     let that = this
-    this.$axios.post('/article', { type: 'show', id: this.$route.query.id }).then(res => {
+    article('/article', { type: 'show', id: this.$route.query.id }).then(res => {
       that.$set(that, 'blogData', res.data.data)
     }).catch(error => console.log(error))
   }

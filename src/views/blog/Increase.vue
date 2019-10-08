@@ -14,6 +14,8 @@
 import E from 'wangeditor'
 import { setTimeout } from 'timers'
 import BlogHead from '../../components/blogHead.vue'
+import { article } from '@/utils/api'
+
 export default {
   name: 'Editor',
   components: {
@@ -45,7 +47,7 @@ export default {
       if (bool) {
         this.$message.error('您输入的值不能为空')
       } else {
-        this.$axios.post('/article', data).then(res => {
+        article('/article', data).then(res => {
           if (res.data.code === 200) {
             that.$message({
               type: 'success',

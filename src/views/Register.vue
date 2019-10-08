@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { register } from '@/utils/api'
 export default {
   data () {
     return {
@@ -78,7 +79,7 @@ export default {
       let _this = this
       this.$refs['registerForm'].validate((valid) => {
         if (valid) {
-          this.$axios.post('/register', {
+          register('/register', {
             username: this.registerForm.account,
             password: this.registerForm.password,
             phone: this.registerForm.phone

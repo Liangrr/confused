@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import API from '@/utils/api'
+import { login } from '@/utils/api'
 
 export default {
   data () {
@@ -72,7 +72,7 @@ export default {
             username: this.userForm.account,
             password: this.userForm.password
           }
-          API.postUserInfoById('/login', data).then((response) => {
+          login('/login', data).then((response) => {
             const data = response.data
             if (data.code === 200) {
               sessionStorage.setItem('token', data.username)
