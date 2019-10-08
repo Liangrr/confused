@@ -1,7 +1,9 @@
 <template>
   <div id="menu">
     <el-menu class="el-menu-vertical-demo"
-             :collapse="isCollapse">
+      background-color="#324057"
+      text-color="#bfcbd9"
+      :collapse="isCollapse">
       <el-menu-item v-for="(item, i) in menu"
                     :key="i"
                     :index="item.idx"
@@ -47,9 +49,9 @@ export default {
 
 <style lang="scss">
 #menu {
-  width: 200px;
   height: 100%;
   .el-menu {
+    width: 220px;
     height: 100%;
   }
 }

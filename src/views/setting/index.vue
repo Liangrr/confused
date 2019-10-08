@@ -1,10 +1,10 @@
 <template>
   <div>
-    <input
+    <!-- <input
       type="text"
       v-model="text"
       v-debounce="search"
-    >
+    > -->
   </div>
 </template>
 <script>
