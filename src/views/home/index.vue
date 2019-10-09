@@ -5,15 +5,15 @@
       <h1>数据统计</h1>
       <el-row :gutter="20" style="margin-bottom: 10px;">
         <el-col :span="4"><div class="data_list today_head"><span class="data_num head">当日数据：</span></div></el-col>
-        <el-col :span="4"><div class="data_list"><span class="data_num">{{userCount}}</span> 新增用户</div></el-col>
-        <el-col :span="4"><div class="data_list"><span class="data_num">{{orderCount}}</span> 新增订单</div></el-col>
-        <el-col :span="4"><div class="data_list"><span class="data_num">{{adminCount}}</span> 新增管理员</div></el-col>
+        <el-col :span="4"><div class="data_list"><span class="data_num">{{dataStats.userCount}}</span> 新增用户</div></el-col>
+        <el-col :span="4"><div class="data_list"><span class="data_num">{{dataStats.orderCount}}</span> 新增订单</div></el-col>
+        <el-col :span="4"><div class="data_list"><span class="data_num">{{dataStats.adminCount}}</span> 新增管理员</div></el-col>
       </el-row>
       <el-row :gutter="20">
         <el-col :span="4"><div class="data_list all_head"><span class="data_num head">总数据：</span></div></el-col>
-        <el-col :span="4"><div class="data_list"><span class="data_num">{{allUserCount}}</span> 注册用户</div></el-col>
-        <el-col :span="4"><div class="data_list"><span class="data_num">{{allOrderCount}}</span> 订单</div></el-col>
-        <el-col :span="4"><div class="data_list"><span class="data_num">{{allAdminCount}}</span> 管理员</div></el-col>
+        <el-col :span="4"><div class="data_list"><span class="data_num">{{dataStats.allUserCount}}</span> 注册用户</div></el-col>
+        <el-col :span="4"><div class="data_list"><span class="data_num">{{dataStats.allOrderCount}}</span> 订单</div></el-col>
+        <el-col :span="4"><div class="data_list"><span class="data_num">{{dataStats.allAdminCount}}</span> 管理员</div></el-col>
       </el-row>
     </section>
     <tendency :sevenDate='sevenDate' :sevenDay='sevenDay'></tendency>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { dataList } from '@/utils/mock.js'
+import { dataStats, dataList } from '@/utils/mock.js'
 import headTop from '@/components/headTop'
 import tendency from '../../components/tendency'
 export default {
@@ -31,12 +31,7 @@ export default {
   },
   data () {
     return {
-      userCount: null,
-      orderCount: null,
-      adminCount: null,
-      allUserCount: null,
-      allOrderCount: null,
-      allAdminCount: null,
+      dataStats,
       sevenDay: dataList.sevenDay,
       sevenDate: dataList.sevenDate
     }
@@ -52,7 +47,8 @@ export default {
     margin-bottom: 40px;
     h1 {
       text-align: center;
-      height: 80px;
+      font-size: 30px;
+      height: 100px;
       line-height: 80px;
     }
     .data_list{

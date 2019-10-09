@@ -2,15 +2,12 @@
   <div class="header_container">
     <el-breadcrumb separator="/">
       <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-      <!-- <el-breadcrumb-item
+      <el-breadcrumb-item
         v-for="(item, index) in $route.meta"
         :key="index"
-      >{{item}}</el-breadcrumb-item> -->
+      >{{item}}</el-breadcrumb-item>
     </el-breadcrumb>
     <el-dropdown class="exit" @command="handleCommand">
-      <!-- <span class="el-dropdown-link avator">
-        <img src="../assets/img/avator.jpg" alt=""><i class="el-icon-arrow-down el-icon--right"></i>
-      </span> -->
       <img src="../assets/img/avator.jpg" class="el-dropdown-link avator">
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item command="/home">首页</el-dropdown-item>

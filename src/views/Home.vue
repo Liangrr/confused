@@ -1,7 +1,21 @@
 <template>
   <div class="home">
-    <Sider />
-    <router-view></router-view>
+    <el-row style="height: 100%;">
+      <el-col
+        :span="4"
+        style="min-height: 100%; background-color: #324057;"
+      >
+        <Sider />
+      </el-col>
+      <el-col
+        :span="20"
+        style="height: 100%;overflow: auto;"
+      >
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -18,6 +32,5 @@ export default {
 .home {
   width: 100%;
   height: 100%;
-  display: flex;
 }
 </style>

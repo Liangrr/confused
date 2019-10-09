@@ -20,12 +20,23 @@ export default new Router({
       },
       children: [
         { path: '/index', component: () => import('@/views/home/index.vue') }, // 首页
+        // 博客
         { path: '/blog', component: () => import('@/views/blog/index.vue') }, // 博客首页
         { path: '/increase', component: () => import('@/views/blog/increase.vue') }, // 博客新增
         { path: '/show', name: 'show', component: () => import('@/views/blog/show.vue') }, // 博客展示
-        { path: '/resource', component: () => import('@/views/resource/index.vue') }, // 资源
-        { path: '/amap', component: () => import('@/views/amap/index.vue') }, // 地图
-        { path: '/setting', component: () => import('@/views/setting/index.vue') }, // 设置
+        // 数据管理
+        { path: '/userList', meta: ['数据管理', '用户列表'], component: () => import('@/views/manageData/userList.vue') }, // 用户列表
+        { path: '/shopList', meta: ['数据管理', '商家列表'], component: () => import('@/views/manageData/shopList.vue') }, // 商家列表
+        { path: '/foodList', meta: ['数据管理', '食品列表'], component: () => import('@/views/manageData/foodList.vue') }, // 食品列表
+        { path: '/orderList', meta: ['数据管理', '订单列表'], component: () => import('@/views/manageData/orderList.vue') }, // 订单列表
+        { path: '/adminList', meta: ['数据管理', '管理员列表'], component: () => import('@/views/manageData/adminList.vue') }, // 管理员列表
+        // 添加数据
+        { path: '/addShop', meta: ['添加数据', '添加商铺'], component: () => import('@/views/addData/addShop.vue') }, // 添加商铺
+        { path: '/addGoods', meta: ['添加数据', '添加商品'], component: () => import('@/views/addData/addGoods.vue') }, // 添加商品
+
+        { path: '/amap', meta: ['地图', '地图'], component: () => import('@/views/amap/index.vue') }, // 地图
+        { path: '/adminSet', meta: ['设置', '管理员设置'], component: () => import('@/views/setting/adminSet.vue') }, // 管理员设置
+        { path: '/explain', meta: ['说明', '说明'], component: () => import('@/views/explain/explain.vue') }, // 说明
         { path: '/', redirect: '/index' }
       ]
     },

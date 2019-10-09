@@ -1,11 +1,20 @@
 <template>
   <div class="amap">
-    <h1>This is an amap page</h1>
+    <head-top></head-top>
     <div class="amap-wrapper">
       <el-amap class="amap-box" :vid="'amap-vue'"></el-amap>
     </div>
   </div>
 </template>
+
+<script>
+import headTop from '@/components/headTop'
+export default {
+  components: {
+    headTop
+  }
+}
+</script>
 
 <style lang="scss">
 .amap {
