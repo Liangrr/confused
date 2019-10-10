@@ -16,6 +16,7 @@ import { setTimeout } from 'timers'
 import BlogHead from '../../components/blogHead.vue'
 import { article } from '@/utils/api'
 
+// 文本编辑器还可以用quillEditor-----vue-quill-editor
 export default {
   name: 'Editor',
   components: {
