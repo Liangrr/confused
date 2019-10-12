@@ -50,8 +50,7 @@ export function post (url, data = {}) {
     url: url,
     method: 'post',
     headers: {
-      'Content-Type': 'application/json;charset=UTF-8',
-      'Authorization': 'token999'
+      'Content-Type': 'application/json;charset=UTF-8'
     },
     data: data
   }
