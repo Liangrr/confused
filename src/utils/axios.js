@@ -6,6 +6,11 @@ const service = axios.create({
 })
 // 添加request拦截器
 service.interceptors.request.use(config => {
+  let token = sessionStorage.getItem('token')
+  if (token) {
+    // config.headers.Authorization = 'token999'
+    // console.log('config', config)
+  }
   return config
 }, error => {
   Promise.reject(error)
@@ -45,7 +50,8 @@ export function post (url, data = {}) {
     url: url,
     method: 'post',
     headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
+      'Content-Type': 'application/json;charset=UTF-8',
+      'Authorization': 'token999'
     },
     data: data
   }

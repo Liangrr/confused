@@ -75,7 +75,8 @@ export default {
           login('/login', data).then((response) => {
             const data = response.data
             if (data.code === 200) {
-              sessionStorage.setItem('token', data.username)
+              that.$store.commit('SET_TOKEN', data.token)
+              that.$store.commit('GET_USER', data.user)
               that.$router.push('/home')
             } else {
               that.$message({

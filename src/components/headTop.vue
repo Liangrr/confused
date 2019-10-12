@@ -26,6 +26,9 @@ export default {
   },
   methods: {
     handleCommand (para) {
+      if (para === '/login') {
+        this.$store.commit('LOGOUT')
+      }
       this.$router.push(para)
     }
   }
