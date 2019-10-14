@@ -9,17 +9,17 @@ export const login = (url, data) => {
 // 注册
 export const register = (url, data) => {
   url = process.env.BASE_URL + url
-  return post(url, data) // resfulapi风格
+  return post(url, data)
 }
 
-// 注册
+// 忘记密码
 export const forget = (url, data) => {
   url = process.env.BASE_URL + url
-  return post(url, data) // resfulapi风格
+  return post(url, data)
 }
 
 // 文章
 export const article = (url, data) => {
   url = process.env.BASE_URL + url
-  return post(url, data) // resfulapi风格
+  return post(url, data)
 }

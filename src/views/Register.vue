@@ -48,7 +48,8 @@ export default {
           placeholder: '请输入账号',
           prefix: 'el-icon-s-custom',
           rules: [
-            { required: true, message: '账号不能为空' }
+            { required: true, message: '账号不能为空' },
+            { pattern: /^[a-zA-Z][0-9a-zA-Z]{5,11}$/, message: '以字母开头,且长度在6-12' }
           ]
         },
         {
@@ -58,7 +59,8 @@ export default {
           placeholder: '请输入密码',
           prefix: 'el-icon-goods',
           rules: [
-            { required: true, message: '密码不能为空' }
+            { required: true, message: '密码不能为空' },
+            { pattern: /^(?=.*[0-9])(?=.*[A-Za-z])[0-9a-zA-Z]{6,12}$/, message: '密码必须包含数字，字母,且长度在6-12' }
           ]
         },
         {
@@ -68,7 +70,8 @@ export default {
           placeholder: '请输入手机号',
           prefix: 'el-icon-phone',
           rules: [
-            { required: true, message: '手机号不能为空' }
+            { required: true, message: '手机号不能为空' },
+            { pattern: /^1[3456789]\d{9}$/, message: '您输入的手机号有误!' }
           ]
         }
       ]
@@ -141,6 +144,25 @@ export default {
     min-width: 600px;
     text-align: left;
   }
+  // .el-form {
+  //   position: relative;
+  //   .hook::after {
+  //     content: "✔";
+  //     font-weight: bold;
+  //     color: green;
+  //     position: absolute;
+  //     right: -25px;
+  //     top: 12px;
+  //   }
+  //   .wrong::after {
+  //     content: "✖";
+  //     font-weight: bold;
+  //     color: red;
+  //     position: absolute;
+  //     right: -25px;
+  //     top: 12px;
+  //   }
+  // }
   // margin: 20px 10%;
   // display: flex;
   // flex-direction: row; /* 子元素横向排列 */

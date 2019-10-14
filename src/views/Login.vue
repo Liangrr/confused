@@ -42,7 +42,9 @@ export default {
           type: 'text',
           prefix: 'el-icon-s-custom',
           rules: [
-            { required: true, message: '账号不能为空', placeholder: '用戶名' }
+            { required: true, message: '账号不能为空' },
+            { pattern: /^[a-zA-Z][0-9a-zA-Z]{5,11}$/, message: '以字母开头,且长度在6-12' }
+
           ]
         },
         {
@@ -51,7 +53,8 @@ export default {
           type: 'password',
           prefix: 'el-icon-goods',
           rules: [
-            { required: true, message: '密码不能为空' }
+            { required: true, message: '密码不能为空' },
+            { pattern: /^(?=.*[0-9])(?=.*[A-Za-z])[0-9a-zA-Z]{6,12}$/, message: '密码必须包含数字，字母,且长度在6-12' }
           ]
         }
       ]
