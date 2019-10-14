@@ -1,5 +1,5 @@
 import axios from 'axios'
-// import router from '../router'
+
 // 创建axios实例
 const service = axios.create({
   timeout: 30000 // 请求超时时间
@@ -8,8 +8,7 @@ const service = axios.create({
 service.interceptors.request.use(config => {
   let token = sessionStorage.getItem('token')
   if (token) {
-    // config.headers.Authorization = 'token999'
-    // console.log('config', config)
+    config.headers.token = token
   }
   return config
 }, error => {
